@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'icymind/neosolarized'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -22,6 +22,12 @@ Plug 'nightsense/forgotten'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'zaki/zazen'
 Plug 'morhetz/gruvbox'
+Plug 'olimorris/ondarkpro.nvim'
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Aethetics - Additional
 Plug 'nightsense/nemo'
@@ -40,9 +46,9 @@ Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding i
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/calendar.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
@@ -55,6 +61,9 @@ Plug 'sebdah/vim-delve'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 
 " Vim only plugins
 if !has('nvim')
@@ -83,6 +92,8 @@ Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
 Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 Plug 'jparise/vim-graphql'                     " GraphQL syntax highlighting
 Plug 'rust-lang/rust.vim'                      " Rust lang syntax highlighting
+Plug 'tikhomirov/vim-glsl'                     " GLSL syntax highlighting
+Plug 'TovarishFin/vim-solidity'                " Solidity syntax highlighting
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -167,7 +178,9 @@ let g:gruvbox_italic=1
 let g:gruvbox_underline=1
 let g:gruvbox_undercurl=1
 let g:airline_theme='gruvbox'
-colorscheme gruvbox
+" colorscheme gruvbox
+
+colorscheme onedarkpro
 
 " Opaque Background (Comment out to use terminal's profile)
 " set termguicolors
@@ -521,6 +534,14 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_skip_key='<C-b>'
 
 "----------------------------------------------
+" Plugin: 'nvim-telescope/telescope'
+"----------------------------------------------
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+"----------------------------------------------
 " Language: Golang
 "----------------------------------------------
 au FileType go set noexpandtab
@@ -673,6 +694,16 @@ au FileType gitconfig set noexpandtab
 au FileType gitconfig set shiftwidth=2
 au FileType gitconfig set softtabstop=2
 au FileType gitconfig set tabstop=2
+
+"----------------------------------------------
+" Language: GLSL
+"----------------------------------------------
+autocmd! BufNewFile,BufRead *.vsh,*.fsh set ft=glsl
+
+au FileType glsl set expandtab
+au FileType glsl set shiftwidth=4
+au FileType glsl set softtabstop=4
+au FileType glsl set tabstop=4
 
 "----------------------------------------------
 " Language: HTML
@@ -888,13 +919,25 @@ function! ColorZazen()
     IndentLinesEnable
 endfunction
 
+" Gruvbox Mode
+function! ColorGruvbox()
+    set background=dark
+    let g:gruvbox_bold=1
+    let g:gruvbox_italic=1
+    let g:gruvbox_underline=1
+    let g:gruvbox_undercurl=1
+    let g:airline_theme='gruvbox'
+    color gruvbox
+endfunction
+
 nmap <leader>e1 :call ColorSolarized()<CR>
 nmap <leader>e2 :call ColorSolarizedLight()<CR>
 nmap <leader>e3 :call ColorPaper()<CR>
 nmap <leader>e4 :call ColorSeoul256()<CR>
 nmap <leader>e5 :call ColorForgotten()<CR>
 nmap <leader>e6 :call ColorZazen()<CR>
-nmap <leader>f :Files<CR>
+nmap <leader>e7 :call ColorGruvbox()<CR>
+" nmap <leader>f :Files<CR>
 nmap <leader>o :Goyo<CR>
 nmap <leader>p :RainbowParentheses!!<CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
