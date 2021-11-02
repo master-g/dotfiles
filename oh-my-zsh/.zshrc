@@ -61,13 +61,14 @@ plugins=(
           httpie
           zsh-autosuggestions
           zsh-syntax-highlighting
+          zsh-proxy
 )
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mg/Library/Android/sdk:/Users/mg/Library/Android/sdk/ndk-bundle"
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/usr/local/anaconda3/bin:$PATH"
+# export PATH="/usr/local/anaconda3/bin:$PATH"
 export PATH="/Users/mg/.cargo/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -106,7 +107,7 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Python
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/anaconda3/bin/python3
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/anaconda3/bin/python3
 export PATH=/Users/mg/Library/Python/3.7/bin:$PATH
 export PATH=/Users/mg/.local/bin:$PATH
 
@@ -116,6 +117,7 @@ export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
 export ANDROID_SDK_ROOT=/Users/mg/Library/Android/sdk
+export ANDROID_NDK_HOME=/Users/mg/Library/Android/sdk/ndk/21.4.7075529
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 export ANT_ROOT=/Users/mg/Library/Android/apache-ant-1.10.3
@@ -154,10 +156,12 @@ alias cd..="cd .."
 alias fh="find . -name "
 alias histg="history | grep"
 alias dush="du -sh *"
-alias myip="ifconfig en0 | grep 'inet ' | cut -d ' ' -f2"
-alias myip6="ifconfig en0 | grep 'inet6 ' | cut -d ' ' -f2"
+#alias myip="ifconfig en0 | grep 'inet ' | cut -d ' ' -f2"
+#alias myip6="ifconfig en0 | grep 'inet6 ' | cut -d ' ' -f2"
 
 alias gfp="git -c diff.mnemonicprefix=false -c core.quotepath=false fetch --prune origin"
+
+alias chives="curl https://rate.sx"
 
 alias dpa="docker ps -a"
 alias drm="docker rm"
@@ -177,7 +181,7 @@ alias webpack='$(npm bin)/webpack'
 alias open='open .'
 alias o='open'
 
-export ALL_PROXY=http://127.0.0.1:7890
+# export ALL_PROXY=http://127.0.0.1:1086
 alias bbb='brew update; brew upgrade; brew cleanup'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -189,11 +193,17 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 # tmuxinator
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 export EDITOR='vim'
 source ~/.bin/tmuxinator.zsh
 
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+eval "$(oh-my-posh --init --shell zsh --config ~/jandedobbeleer.omp.json)"
+enable_poshtooltips
