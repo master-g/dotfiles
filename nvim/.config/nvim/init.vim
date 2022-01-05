@@ -22,7 +22,7 @@ Plug 'nightsense/forgotten'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'zaki/zazen'
 Plug 'morhetz/gruvbox'
-Plug 'olimorris/ondarkpro.nvim'
+Plug 'olimorris/onedarkpro.nvim'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -64,6 +64,7 @@ Plug 'tpope/vim-surround'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'mhinz/vim-startify'
 
 " Vim only plugins
 if !has('nvim')
@@ -180,6 +181,7 @@ let g:gruvbox_undercurl=1
 let g:airline_theme='gruvbox'
 " colorscheme gruvbox
 
+let g:airline_theme='onedarkpro'
 colorscheme onedarkpro
 
 " Opaque Background (Comment out to use terminal's profile)
