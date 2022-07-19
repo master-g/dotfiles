@@ -25,6 +25,18 @@ M.plugins = {
     },
     ["fatih/vim-go"] = {
         disable = false,
+    },
+    ["simrat39/rust-tools.nvim"] = {
+        after = "nvim-lspconfig",
+        config = function()
+            require("rust-tools").setup({})
+        end
+    },
+    ["jose-elias-alvarez/null-ls.nvim"] = {
+        after = "nvim-lspconfig",
+        config = function()
+            require("custom.plugins.null-ls").setup()
+        end
     }
   },
 }
@@ -45,6 +57,10 @@ M.options = {
     vim.opt.tabstop = 4
     vim.opt.softtabstop = 4
     vim.opt.history = 500
+    vim.opt.guifont="MonoLisa NF:h14"
+    vim.g.neovide_cursor_vfx_mode="railgun"
+    -- vim.g.neovide_remember_window_size=true
+    vim.g.neovide_fullscreen = true
   end,
 }
 
