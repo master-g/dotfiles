@@ -20,7 +20,14 @@ M.plugins = {
 		},
     ["goolord/alpha-nvim"] = {
       disable = false,
-    }
+    },
+    ["folke/which-key.nvim"] = {
+      config = function()
+        require("which-key").setup {
+
+        }
+      end
+    },
 	},
 
 	override = {
@@ -42,6 +49,7 @@ M.plugins = {
 				"yaml",
         "c",
         "rust",
+        "solidity",
         "lua",
 			},
 		},
@@ -77,6 +85,9 @@ M.plugins = {
 
 				-- shell
 				"shellcheck",
+
+        -- solidity
+        "solang",
 			},
 		},
 	},
@@ -105,7 +116,7 @@ M.plugins = {
 	status = { colorizer = true },
 }
 
-M.ui = { theme = "gruvbox" }
+M.ui = { theme = "gruvchad" }
 
 M.mappings = require("custom.mappings")
 
