@@ -28,6 +28,9 @@ M.plugins = {
         }
       end
     },
+    ["github/copilot.vim"] = {
+      branch = "release",
+    }
 	},
 
 	override = {
