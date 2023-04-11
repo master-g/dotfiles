@@ -111,7 +111,7 @@ M.plugins = {
       vim.opt.history = 500
       vim.opt.guifont="MonoLisa NF:h14"
       vim.g.neovide_cursor_vfx_mode="railgun"
-      -- vim.g.neovide_remember_window_size=true
+      vim.g.neovide_remember_window_size = true
       vim.g.neovide_fullscreen = true
     end
 	},
