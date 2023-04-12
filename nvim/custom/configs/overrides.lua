@@ -42,12 +42,21 @@ M.mason = {
     "deno",
     "prettier",
 
+    -- golang
+    "gopls",
+
     -- c/cpp stuff
     "clangd",
     "clang-format",
 
     -- rust stuff
     "rust-analyzer",
+
+    -- solidity
+    "solang",
+
+    -- config files
+    "taplo",
   },
 }
 
