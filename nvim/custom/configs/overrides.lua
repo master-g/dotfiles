@@ -42,7 +42,7 @@ M.mason = {
     "deno",
     "prettier",
 
-    -- golang
+    -- golang 
     "gopls",
 
     -- c/cpp stuff
