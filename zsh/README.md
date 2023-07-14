@@ -1,5 +1,3 @@
-# oh-my-zsh
+# antigen
 
-https://github.com/ohmyzsh/ohmyzsh
-
-
+https://github.com/zsh-users/antigen

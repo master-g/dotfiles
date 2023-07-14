@@ -20,21 +20,13 @@ alias unproxy="
     unset ALL_PROXY;
     unset NO_PROXY"
 
-# zsh plugins
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mg/Library/Android/sdk:/Users/mg/Library/Android/sdk/ndk-bundle"
+export PATH="/opt/homebrew/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 # export PATH="/usr/local/anaconda3/bin:$PATH"
 export PATH="/Users/mg/.cargo/bin:$PATH"
@@ -68,24 +60,12 @@ export PATH=$ANDROID_SDK_ROOT/platform-tools/systrace:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 export ANT_ROOT=/Users/mg/Library/Android/apache-ant-1.10.3
 
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/Applications/CocosCreator.app/Contents/Resources/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-
-# Add environment variable COCOS_X_ROOT for cocos2d-x
-export COCOS_X_ROOT=/Applications/CocosCreator.app/Contents/Resources/cocos2d-x
-export PATH=$COCOS_X_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/Applications/CocosCreator.app/Contents/Resources/cocos2d-x/templates
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
-
 # Go
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/opt/go/libexec
-export GOPROXY=https://goproxy.cn
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+#export GOPATH=$HOME/go
+#export GOROOT=/opt/homebrew/bin/go
+#export GOPROXY=https://goproxy.cn
+#export PATH=$PATH:$GOPATH/bin
+#export PATH=$PATH:$GOROOT/bin
 
 # flutter
 export FLUTTER_ROOT=/Users/mg/Library/flutter
@@ -160,5 +140,16 @@ export PNPM_HOME="/Users/mg/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
+#antigen
+source ~/antigen.zsh
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen end
+
 #starship
 eval "$(starship init zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
